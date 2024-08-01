@@ -1,0 +1,15 @@
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+server:
+  port: 8099
+
+mariadb:
+  driver: org.mariadb.jdbc.Driver
+  url: jdbc:mariadb://118.220.40.170:3306/blog
+  user: chany
+  password: 1234
+
