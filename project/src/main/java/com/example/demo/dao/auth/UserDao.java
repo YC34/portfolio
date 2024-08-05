@@ -4,12 +4,11 @@ package com.example.demo.dao.auth;
 import com.example.demo.dto.auth.User;
 import com.example.demo.dto.auth.UserRole;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
-@Component
+@Repository
 public class UserDao {
 
     @Value("${mariadb.driver}")

@@ -56,4 +56,8 @@ public class AuthService {
         return false;
 
     }
+
+    public User getUser(String username) throws Exception {
+        return dao.getUser(username);
+    }
 }

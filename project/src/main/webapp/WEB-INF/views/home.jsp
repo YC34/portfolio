@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%
+  Boolean login = (Boolean) session.getAttribute("login");
+%>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
@@ -105,18 +109,18 @@
                   </svg>
                 </a>
               </li>
-
-              <li class="nav-item"><a class="nav-link" href="/signup">회원가입</a></li>
-              <li class="nav-item"><a class="nav-link" href="/login">로그인</a></li>
-              <%
-                Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
-                if (isLoggedIn != null && isLoggedIn){
-              %>
-              <li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">나의소개</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">로그아웃</a></li>
-              <%}%>
+              <c:choose>
+                <c:when test="${login == null || !login}">
+                <li class="nav-item"><a class="nav-link" href="/signup">회원가입</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login">로그인</a></li>
+                </c:when>
+                <c:when test="${login != null && login}">
+                <li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">나의소개</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="logout()">로그아웃</a></li>
+                </c:when>
+              </c:choose>
             </ul>
           </div>
         </div>
@@ -142,5 +146,18 @@
       </div>
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+       async function logout(){
+          const response = await fetch('api/auth/logout',{
+            method: 'POST'
+          });
+
+          if (response.ok){
+            window.location.href="/"
+          } else{
+            alert('logout을 실패하였습니다.')
+          }
+       }
+    </script>
   </body>
 </html>

@@ -37,7 +37,6 @@ public class AuthRestController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 존재하는 아이디 입니다.");
         }
 
-
         try{
             user.setAuth(UserRole.USER);
             service.signUpUser(user);
@@ -50,17 +49,34 @@ public class AuthRestController {
 
     // action login
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user, HttpSession session) throws Exception {
-        // TODO 1. id, password check
+    public ResponseEntity<?> login(@RequestBody User user, HttpSession session) throws Exception {
 
         log.info("들어왔니?"+user.getUsername());
-
+        // 인증 .
         boolean checkInfo = service.checkInfo(user);
+
+        // userInfo get 인가를 위해 username과 권한을 가져옴.
+        // TODO username은 등록을 위한..? 정보. 유일한 컬럼인 id를 고려.
+
+        User loginUser = service.getUser(user.getUsername());
+        log.info("login USERNAME : " + loginUser.getUsername());
+        log.info("login USERAUTH : " + String.valueOf(loginUser.getAuth()));
+
+        // 인가
         if(checkInfo){
-            session.setAttribute("username", user.getUsername());
-            session.setAttribute("isLoggedIn", true);
-            return ResponseEntity.ok("로그인 성공");
+            session.setAttribute("username", loginUser.getUsername());
+            session.setAttribute("role", loginUser.getAuth());
+            session.setAttribute("login", true);
+            return ResponseEntity.ok(loginUser);
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인 실패 아이디 비밀번호를 확인하세요.");
     }
+
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession session) throws Exception {
+        session.invalidate();
+        return ResponseEntity.ok("로그아웃 성공.");
+    }
+
 }
