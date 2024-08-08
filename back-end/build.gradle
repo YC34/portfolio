@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.2'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id 'war'
 }
 
 group = 'com.backend'
@@ -18,22 +19,23 @@ repositories {
 }
 
 dependencies {
-	// security
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	// thymeleaf
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-	implementation 'org.projectlombok:lombok'
-
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
-	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	implementation group:'org.glassfish.web', name:'jakarta.servlet.jsp.jstl',version:'2.0.0'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
+	// jstl dependency 추가
+	implementation group: 'jakarta.servlet.jsp.jstl', name: 'jakarta.servlet.jsp.jstl-api', version: '3.0.0'
+	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '3.0.0'
+
+
+	// mariadb jdbc
+	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.2.0'
 }
 
 tasks.named('test') {
