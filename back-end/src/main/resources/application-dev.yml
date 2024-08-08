@@ -1,7 +1,7 @@
 # dev
 
 server:
-  port: 53889
+  port: 53899
 spring:
   datasource:
     url: jdbc:mariadb://118.220.40.170:3306/blog

@@ -1,0 +1,40 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.backend.formlogin.repository.user.UserMapper">
+    <!-- start test    -->
+    <!--        <select id="selectUserById" resultType="com.backend.formlogin.dto.user.User">-->
+    <!--            SELECT * FROM user WHERE uid = #{uid}-->
+    <!--        </select>-->
+    <!-- end test    -->
+
+    <!-- Start CRUD USER   -->
+        <insert id="insertUser" >
+            insert into user ( username
+                             , password
+                             , role
+                             , create_at
+                             , delete_yn
+                             , email)
+            values(
+                    #{username}
+                  , #{password}
+                  , #{role}
+                  , NOW()
+                  , 'N'
+                  , #{email}
+                  )
+        </insert>
+
+        <select id="getEmail" resultType="com.backend.formlogin.dto.user.User">
+            select * from user where email = #{email}
+        </select>
+        <update id="updateUser">
+
+        </update>
+        <update id="deleteUser">
+
+        </update>
+    <!-- end CRUD USER   -->
+
+</mapper>
