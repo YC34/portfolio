@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.backend.board.BoardMapper">
+
+    <insert id="addBoard">
+        insert into board (title
+        , uid
+        , content
+        , date
+        )
+        values(
+               #{title}
+              , #{uid}
+              , #{content}
+              , CURRENT_TIMESTAMP()
+              );
+    </insert>
+
+    <select id="getBoard">
+        select b.fNum, b.title, DATE_FORMAT(b.cdate, '%m-%d %H:%i'), b.content, u.username
+        from board b join user u on b.uid = u.uid where b.fnum = #{fnum}
+    </select>
+
+    <update id="updateBoard">
+        update board set title = #{title}, cdate = now(), content = #{content} where fnum = #{fnum}
+
+    </update>
+
+    <delete id="delBoard">
+        delete from board where fnum = #{fnum}
+    </delete>
+
+    <select id="getBoards">
+        select b.fnum, b.title, DATE_FORMAT(b.cdate, '%m-%d %H:%i') as date, b.content, u.username
+        from board b join user u on b.uid = u.uid
+
+    </select>
+</mapper>
