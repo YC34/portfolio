@@ -65,7 +65,7 @@ public class UserController {
         }
 
         int loginCount = service.signUp(user);
-        if( loginCount < 1) {
+        if( loginCount < 0) {
             return "redirect:user/signup-page";
         }
         return "redirect:/login-page";

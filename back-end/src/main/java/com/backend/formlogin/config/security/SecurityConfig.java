@@ -18,7 +18,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests((auth)->{
                     auth.requestMatchers("/","/signUp","/signIn","/login").permitAll()
-                        .requestMatchers("/WEB-INF/views/home.jsp","/WEB-INF/views/user/signup-page.jsp").permitAll()
+                        .requestMatchers("/WEB-INF/views/home.jsp","/WEB-INF/views/login-page.jsp","/WEB-INF/views/user/signup-page.jsp").permitAll()
                         .anyRequest().authenticated();
                 })
                 .csrf( (CsrfConfigurer::disable))

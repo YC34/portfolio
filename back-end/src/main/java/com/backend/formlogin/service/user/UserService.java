@@ -27,7 +27,7 @@ public class UserService {
             user.setPassword(passwordEncoder.encode(user.getPassword()));// DB에 암호화
             Integer count = mapper.insertUser(user);
             System.out.println(count);
-            return mapper.insertUser(user);
+            return count;
         }
             return 0;
     }

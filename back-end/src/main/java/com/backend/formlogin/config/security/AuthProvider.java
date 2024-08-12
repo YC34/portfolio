@@ -31,12 +31,10 @@ public class AuthProvider implements AuthenticationProvider {
         String password = (String) authentication.getCredentials(); // 로그인 창에 입력한 password
 
         PasswordEncoder encoder = userService.passwordEncoder(); // 비밀번호 검증
-        UsernamePasswordAuthenticationToken authenticationToken ; // id password를 통한 검증.
         User user = userService.getEmail(email);
         if(user != null && encoder.matches(password, user.getPassword())){
             List<GrantedAuthority> roles = new ArrayList<>();
             roles.add(new SimpleGrantedAuthority(user.getRole().name()));
-
             return new UsernamePasswordAuthenticationToken(email, password, roles);
         }else {
             log.info("입력한 이메일 : " + email);

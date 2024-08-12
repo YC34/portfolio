@@ -1,6 +1,5 @@
 package com.backend.formlogin.config.security;
 
-import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,10 +24,14 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-//        HttpSession session = request.getSession();
-//        session.setAttribute("username", authentication.getName());
+
+        HttpSession session = request.getSession();
+        session.setAttribute("username", authentication.getName());
+        session.setAttribute("auth", authentication.getAuthorities());
+        log.info("auth: " + authentication.getAuthorities());
         log.info("Login SuccessHandler");
         log.info("Username: " + authentication.getName());
+
 
         response.sendRedirect("/");
     }
