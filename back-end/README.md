@@ -10,7 +10,7 @@
     com -
         backend - 
             formlogin : form방식 로그인 구현 및 서비스
-            jwtlogin : 토큰 방식 로그인 구현 및 서비스
+            jwtlogin : 토큰 방식 로그인 구현 및 서비스(Postman으로 test )
     resouces -
         mapper : 쿼리문 xml 파일
         application.yml : 메인 yml
@@ -43,4 +43,6 @@
   * create_at ( 생성 일 (회원 가입 날짜 ))
   * delete_yn ( 회원 탈퇴 여부 : default 'N' -> 탈퇴하여도 회원의 정보는 유지하고 가지고 있는다.)
   * email ( 로그인시 사용할 id - 중복이 없어야 한다. )
- 
+
+* api 명세서(jwtTokenLogin용)
+  * 

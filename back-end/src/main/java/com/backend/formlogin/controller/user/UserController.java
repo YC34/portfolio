@@ -1,4 +1,4 @@
-package com.backend.formlogin.controller.web_user;
+package com.backend.formlogin.controller.user;
 
 import com.backend.formlogin.dto.user.User;
 import com.backend.formlogin.dto.user.UserRole;
@@ -22,12 +22,6 @@ public class UserController {
         return "login-page";
     }
 
-//    @PostMapping("/login")
-//    public String login(@RequestBody User user , Model model) {
-//    //        service.login();
-//    // TODO login 성공시와 실패시의 분기문
-//        return "redirect:/";
-//    }
 
     @PostMapping("/logout")
     public String logout() {

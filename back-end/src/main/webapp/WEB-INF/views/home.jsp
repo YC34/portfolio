@@ -19,8 +19,9 @@
           <c:if test="${sessionScope.auth[0] == 'USER'}">
               <li>${sessionScope.username}</li>
               <li><a href="">유저 메뉴</a></li>
+              <li><a href="board">게시판 </a></li>
           </c:if>
-        <li><a href="logout"></a>로그아웃</li>
+        <li><a href="logout">로그아웃</a></li>
         <p>${sessionScope.auth}</p>
        </c:if>
     </ul>

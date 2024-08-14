@@ -5,3 +5,8 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+
+# openssl rand -hex 64 == token 발급 명령어
+jwt:
+  secret: 1492f18c4ec498d6e0ea0a2b2191a3ba228cf0263ec88c98c3d17b3a02554731902495f0b8e1eef5aa1020559fc3f5c08bdc19fee9475014410d9fc5e560e0e8
+  expiration_time: 86400000

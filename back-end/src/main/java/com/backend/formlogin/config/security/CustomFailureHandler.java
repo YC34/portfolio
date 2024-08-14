@@ -23,7 +23,7 @@ public class CustomFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
             log.info("Login Error Cause : "+String.valueOf(exception.getCause()));
-            log.info("Login Error Message : "+exception.getMessage());
+            log.info("Login Error Message : " + exception.getMessage());
 
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.sendRedirect("/login");

@@ -1,7 +1,7 @@
-package com.backend.formlogin.service.user;
+package com.backend.jwtTokenLogin.service.user;
 
-import com.backend.formlogin.dto.user.User;
-import com.backend.formlogin.repository.user.UserMapper;
+import com.backend.jwtTokenLogin.dto.user.User;
+import com.backend.jwtTokenLogin.repository.user.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;

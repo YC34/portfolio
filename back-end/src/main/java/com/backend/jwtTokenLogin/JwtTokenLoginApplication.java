@@ -1,12 +1,12 @@
-package com.backend.jwtlogin;
+package com.backend.jwtTokenLogin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JwtloginApplication {
+public class JwtTokenLoginApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JwtloginApplication.class, args);
+        SpringApplication.run(JwtTokenLoginApplication.class, args);
     }
 }

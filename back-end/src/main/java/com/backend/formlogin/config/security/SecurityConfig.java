@@ -3,7 +3,6 @@ package com.backend.formlogin.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
@@ -19,6 +18,7 @@ public class SecurityConfig {
         http.authorizeRequests((auth)->{
                     auth.requestMatchers("/","/signUp","/signIn","/login").permitAll()
                         .requestMatchers("/WEB-INF/views/home.jsp","/WEB-INF/views/login-page.jsp","/WEB-INF/views/user/signup-page.jsp").permitAll()
+//                            .requestMatchers("/WEB-INF/views/**").permitAll()
                         .anyRequest().authenticated();
                 })
                 .csrf( (CsrfConfigurer::disable))

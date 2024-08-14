@@ -28,6 +28,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         HttpSession session = request.getSession();
         session.setAttribute("username", authentication.getName());
         session.setAttribute("auth", authentication.getAuthorities());
+
         log.info("auth: " + authentication.getAuthorities());
         log.info("Login SuccessHandler");
         log.info("Username: " + authentication.getName());
