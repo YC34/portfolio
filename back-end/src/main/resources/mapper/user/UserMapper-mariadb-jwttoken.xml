@@ -1,12 +1,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.backend.formlogin.repository.user.UserMapper">
-    <!-- start test    -->
-    <!--        <select id="selectUserById" resultType="com.backend.formlogin.dto.user.User">-->
-    <!--            SELECT * FROM user WHERE uid = #{uid}-->
-    <!--        </select>-->
-    <!-- end test    -->
+<mapper namespace="com.backend.jwtTokenLogin.mapper.user.UserMapper">
 
     <!-- Start CRUD USER   -->
         <insert id="insertUser" >
@@ -26,9 +21,16 @@
                   )
         </insert>
 
-        <select id="getUserInfo" resultType="com.backend.formlogin.dto.user.User">
-            select email from USER
-                     where email = #{email}
+        <select id="getUserInfo" resultType="com.backend.jwtTokenLogin.entity.user.User">
+            select * from USER
+            where email = #{email}
+        </select>
+
+        <!--  이메일 중복체크.  -->
+        <select id="existsByEmail" resultType="boolean">
+            SELECT COUNT(1)
+            FROM USER
+            WHERE email = #{email}
         </select>
         <update id="updateUser">
 

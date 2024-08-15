@@ -1,9 +1,8 @@
-package com.backend.jwtTokenLogin.dto.user;
+package com.backend.jwtTokenLogin.entity.user;
 
 
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
 
 @Getter
@@ -12,11 +11,12 @@ public class User {
 
     private Integer uid;
     private String username;
-    private String password;
     private UserRole role;
     private LocalDateTime createAt;
     private String deleteYn;
     private String email;
+    private String password;
+
 
     public User() {
 

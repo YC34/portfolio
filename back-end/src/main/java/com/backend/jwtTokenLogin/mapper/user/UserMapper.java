@@ -1,6 +1,6 @@
-package com.backend.jwtTokenLogin.repository.user;
+package com.backend.jwtTokenLogin.mapper.user;
 
-import com.backend.jwtTokenLogin.dto.user.User;
+import com.backend.jwtTokenLogin.entity.user.User;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -9,5 +9,7 @@ public interface UserMapper {
     // 회원 가입.
     int insertUser(User user);
 
-    User getEmail(String email);
+    User getUserInfo(String email);
+
+    boolean existsByEmail(String email);
 }
